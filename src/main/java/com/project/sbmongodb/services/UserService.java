@@ -35,6 +35,18 @@ public class UserService {
 		return new User(objDT.getId(), objDT.getName(), objDT.getEmail());
 	}
 	
+	public User update(User obj) {
+		Optional<User> update = uservice.findById(obj.getId());
+		User u = update.get();
+		updateDate(u, obj);
+		return uservice.save(u);
+	}
+	
+	private void updateDate(User oldUser, User obj) {
+		oldUser.setName(obj.getName());
+		oldUser.setEmail(obj.getEmail());
+	}
+
 	public void delete(String id) {
 		findById(id);
 		uservice.deleteById(id);
