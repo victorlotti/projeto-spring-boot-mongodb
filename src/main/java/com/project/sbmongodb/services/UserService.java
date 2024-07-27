@@ -1,13 +1,13 @@
 package com.project.sbmongodb.services;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.sbmongodb.domain.User;
+import com.project.sbmongodb.dto.UserDTO;
 import com.project.sbmongodb.repositories.UserRepository;
 import com.project.sbmongodb.services.exception.ObjectNotFoundException;
 
@@ -25,5 +25,13 @@ public class UserService {
 	public User findById(String id) {
 		Optional<User> user = uservice.findById(id);
 		return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+	}
+	
+	public User insert(User obj) {
+		return uservice.insert(obj);
+	}
+	
+	public User fromDTO(UserDTO objDT) {
+		return new User(objDT.getId(), objDT.getName(), objDT.getEmail());
 	}
 }
