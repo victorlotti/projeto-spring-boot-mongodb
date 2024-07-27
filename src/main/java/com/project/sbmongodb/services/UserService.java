@@ -34,4 +34,9 @@ public class UserService {
 	public User fromDTO(UserDTO objDT) {
 		return new User(objDT.getId(), objDT.getName(), objDT.getEmail());
 	}
+	
+	public void delete(String id) {
+		findById(id);
+		uservice.deleteById(id);
+	}
 }
