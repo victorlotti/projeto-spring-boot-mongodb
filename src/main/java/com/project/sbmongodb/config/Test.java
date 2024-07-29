@@ -39,7 +39,7 @@ public class Test implements CommandLineRunner {
 		urepo.saveAll(Arrays.asList(user1, user2, user3));
 		
 		Post post1 = new Post(null, sdf.parse("21/06/2000"), "Partiu viagem", "Vou viajar para São Paulo. Abracos!", new AuthorDTO(user1));
-		Post post2 = new Post(null, sdf.parse("24/07/2000"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(user3));
+		Post post2 = new Post(null, sdf.parse("24/07/2000"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(user1));
 		post.saveAll(Arrays.asList(post1, post2));
 		
 		user1.getPosts().addAll(Arrays.asList(post1, post2));
