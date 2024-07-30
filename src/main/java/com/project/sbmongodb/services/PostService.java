@@ -24,6 +24,6 @@ public class PostService {
 	}
 	
 	public List<Post> findByTitle(String text) {
-		return post.findByTitleContaining(text);
+		return post.searchTitle(text);
 	}
 }
